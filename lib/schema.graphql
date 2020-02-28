@@ -1,7 +1,7 @@
 type Course {
   _id: ID!
   title: String!
-  teacer: String
+  teacher: String
   description: String!
   topic: String
 }
