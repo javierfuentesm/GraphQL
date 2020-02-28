@@ -1,13 +1,14 @@
-
 type Course {
-_id:ID,
-title: String,
-teacer: String,
-description: String,
-topic: String,
+  _id: ID!
+  title: String!
+  teacer: String
+  description: String!
+  topic: String
 }
 
 type Query {
-    "Devulve todos los cursos"
-    getCourses: [Course],
+  "Devulve todos los cursos"
+  getCourses: [Course]
+  "Devulve un curso"
+  getCourse(id:ID!): Course
 }
