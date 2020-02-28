@@ -5,10 +5,21 @@ type Course {
   description: String!
   topic: String
 }
+input CourseInput {
+  title: String!
+  teacher: String
+  description: String!
+  topic: String
+}
 
 type Query {
   "Devulve todos los cursos"
   getCourses: [Course]
   "Devulve un curso"
-  getCourse(id:ID!): Course
+  getCourse(id: ID!): Course
+}
+
+type Mutation {
+  "Crear curso"
+  createCourse(input: CourseInput!): Course
 }
