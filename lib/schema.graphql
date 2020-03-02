@@ -1,3 +1,9 @@
+enum Level{
+  principiante
+  intermedio
+  avanzado
+}
+
 type Course {
   _id: ID!
   title: String!
@@ -5,12 +11,14 @@ type Course {
   description: String!
   topic: String
   people: [Student]
+  level: Level
 }
 input CourseInput {
   title: String!
   teacher: String
   description: String!
   topic: String
+  level:Level
 }
 input CourseEditInput {
   title: String
