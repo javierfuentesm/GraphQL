@@ -1,4 +1,4 @@
-enum Level{
+enum Level {
   principiante
   intermedio
   avanzado
@@ -18,7 +18,7 @@ input CourseInput {
   teacher: String
   description: String!
   topic: String
-  level:Level
+  level: Level
 }
 input CourseEditInput {
   title: String
@@ -26,22 +26,38 @@ input CourseEditInput {
   description: String
   topic: String
 }
-input StudentInput {
+input PersonInput {
   name: String!
   email: String!
+  phone: String
+  avatar: String
 }
-input StudentEditInput {
+input PersonEditInput {
   name: String
   email: String
+  phone: String
+  avatar: String
 }
 input Studentnput {
   name: String!
   email: String!
 }
-type Student {
+interface Person {
   _id: ID!
   name: String!
   email: String!
+}
+type Student implements Person {
+  _id: ID!
+  name: String!
+  email: String!
+  avatar: String
+}
+type Monitor implements Person {
+  _id: ID!
+  name: String!
+  email: String!
+  phone: String
 }
 
 type Query {
@@ -50,23 +66,23 @@ type Query {
   "Devulve un curso"
   getCourse(id: ID!): Course
   "Devuelve todos los estudiantes"
-  getStudents: [Student]
+  getPeople: [Person]
   "Devulve un estudiante"
-  getStudent(id: ID!): Student
+  getPerson(id: ID!): Person
 }
 
 type Mutation {
   "Crear curso"
   createCourse(input: CourseInput!): Course
-  "Crear estudiane"
-  createStudent(input: StudentInput!): Student
+  "Crear uan persona"
+  createPerson(input: PersonInput!): Person
   "Edita un curso"
   editCourse(_id: ID!, input: CourseEditInput): Course
-  "Edita un estudiante"
-  editStudent(_id: ID!, input: StudentEditInput): Student
+  "Edita una persona"
+  editPerson(_id: ID!, input: PersonEditInput): Person
   "Elimina un curso"
   deleteCourse(_id: ID!): Int
   "Elimina un estudiante"
   deleteStudent(_id: ID!): Int
-  addPerson(courseID:ID!,personID: ID!):Course
+  addPerson(courseID: ID!, personID: ID!): Course
 }
