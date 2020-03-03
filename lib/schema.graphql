@@ -3,6 +3,7 @@ enum Level {
   intermedio
   avanzado
 }
+union GlobalSearch = Course | Student | Monitor
 
 type Course {
   _id: ID!
@@ -69,6 +70,9 @@ type Query {
   getPeople: [Person]
   "Devulve un estudiante"
   getPerson(id: ID!): Person
+  "Ejecuta una busqueda global"
+  searchItems(keyword: String!): [GlobalSearch]
+
 }
 
 type Mutation {
